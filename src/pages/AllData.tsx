@@ -201,15 +201,15 @@ const AllData = () => {
   };
 
   return (
-    <div className="grid grid-cols-12 gap-6 h-screen">
+    <div className="flex gap-6">
       {/* Navigation Pivot */}
-      <div className="col-span-3">
-        <Card className="h-full">
+      <div className="w-80 flex-shrink-0">
+        <Card className="h-fit">
           <CardHeader>
             <CardTitle className="text-lg">Navigation Pivot</CardTitle>
           </CardHeader>
           <CardContent>
-            <ScrollArea className="h-[calc(100vh-200px)]">
+            <ScrollArea className="h-96">
               <div className="space-y-6">
                 <div>
                   <h3 className="font-semibold mb-3">By Fund</h3>
@@ -274,7 +274,7 @@ const AllData = () => {
       </div>
 
       {/* Main Data Grid */}
-      <div className="col-span-9">
+      <div className="flex-1 min-w-0">
         <div className="space-y-6">
           <div className="flex justify-between items-center">
             <div>
