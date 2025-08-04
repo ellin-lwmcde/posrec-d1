@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* Financial Data Dashboard Design System 
 All colors MUST be HSL.
 */
 
@@ -17,7 +17,7 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 225 100% 35%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -35,6 +35,22 @@ All colors MUST be HSL.
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
+
+    /* Financial Status Colors */
+    --error: 0 75% 50%;
+    --error-foreground: 0 0% 100%;
+    --warning: 35 100% 55%;
+    --warning-foreground: 0 0% 100%;
+    --info: 210 100% 55%;
+    --info-foreground: 0 0% 100%;
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    /* Exception Status Colors */
+    --exception-not-match-qty: 0 75% 50%;
+    --exception-near-match-qty: 35 100% 55%;
+    --exception-not-match-internal: 55 95% 50%;
+    --exception-not-match-external: 210 100% 55%;
 
     --radius: 0.5rem;
 
