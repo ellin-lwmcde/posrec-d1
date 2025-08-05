@@ -285,18 +285,17 @@ const Exceptions = () => {
         </Card>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Exception Details</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <DataTable
-            columns={columns}
-            data={tableData}
-            searchPlaceholder="Search exceptions by CUSIP, security, fund, or dealer..."
-          />
-        </CardContent>
-      </Card>
+      <div className="bg-background border rounded-lg">
+        <div className="border-b p-4">
+          <h3 className="text-lg font-semibold">Exception Details</h3>
+        </div>
+        <DataTable
+          columns={columns}
+          data={tableData}
+          searchPlaceholder="Search exceptions by CUSIP, security, fund, or dealer..."
+          className="excel-grid"
+        />
+      </div>
     </div>
   );
 };

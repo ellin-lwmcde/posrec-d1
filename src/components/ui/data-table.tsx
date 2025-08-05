@@ -67,7 +67,8 @@ export const DataTable = ({
       <TableRow 
         className={cn(
           "cursor-pointer hover:bg-muted/50",
-          row.className
+          row.className,
+          className?.includes("excel-grid") && "excel-row border-b border-border"
         )}
         onClick={() => onRowClick?.(row)}
       >
@@ -75,23 +76,27 @@ export const DataTable = ({
           <TableCell 
             key={column.key}
             className={cn(
-              index === 0 && level > 0 && `pl-${4 + level * 4}`
+              index === 0 && level > 0 && `pl-${4 + level * 4}`,
+              className?.includes("excel-grid") && "excel-cell border-r border-border last:border-r-0 py-1 px-2"
             )}
           >
             {index === 0 && row.expandable && (
               <Button
                 variant="ghost"
                 size="sm"
-                className="h-4 w-4 p-0 mr-2"
+                className={cn(
+                  "h-4 w-4 p-0 mr-2",
+                  className?.includes("excel-grid") && "h-3 w-3 mr-1 border border-border rounded-sm"
+                )}
                 onClick={(e) => {
                   e.stopPropagation();
                   toggleRow(row.id);
                 }}
               >
                 {expandedRows.has(row.id) ? (
-                  <ChevronDown className="h-3 w-3" />
+                  <ChevronDown className="h-2 w-2" />
                 ) : (
-                  <ChevronRight className="h-3 w-3" />
+                  <ChevronRight className="h-2 w-2" />
                 )}
               </Button>
             )}
@@ -120,16 +125,24 @@ export const DataTable = ({
         </div>
       )}
       
-      <div className="rounded-md border">
-        <Table>
-          <TableHeader>
-            <TableRow>
+      <div className={cn(
+        "rounded-md border",
+        className?.includes("excel-grid") && "border-2 border-border"
+      )}>
+        <Table className={className?.includes("excel-grid") ? "excel-table" : ""}>
+          <TableHeader className={className?.includes("excel-grid") ? "excel-header" : ""}>
+            <TableRow className={className?.includes("excel-grid") ? "excel-header-row" : ""}>
               {columns.map((column) => (
-                <TableHead key={column.key}>{column.header}</TableHead>
+                <TableHead 
+                  key={column.key}
+                  className={className?.includes("excel-grid") ? "excel-header-cell" : ""}
+                >
+                  {column.header}
+                </TableHead>
               ))}
             </TableRow>
           </TableHeader>
-          <TableBody>
+          <TableBody className={className?.includes("excel-grid") ? "excel-body" : ""}>
             {filteredData.length > 0 ? (
               filteredData.map(row => renderRow(row))
             ) : (

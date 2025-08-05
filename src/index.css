@@ -112,3 +112,64 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+/* Excel-like grid styles */
+.excel-table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.excel-header {
+  background: hsl(var(--muted));
+  border-bottom: 2px solid hsl(var(--border));
+}
+
+.excel-header-row {
+  border: none;
+}
+
+.excel-header-cell {
+  background: hsl(var(--muted));
+  border-right: 1px solid hsl(var(--border));
+  border-bottom: 1px solid hsl(var(--border));
+  padding: 8px 12px;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  text-align: left;
+}
+
+.excel-header-cell:last-child {
+  border-right: none;
+}
+
+.excel-body {
+  background: hsl(var(--background));
+}
+
+.excel-row {
+  background: hsl(var(--background));
+  transition: background-color 0.1s ease;
+}
+
+.excel-row:nth-child(even) {
+  background: hsl(var(--muted) / 0.1);
+}
+
+.excel-row:hover {
+  background: hsl(var(--muted) / 0.3);
+}
+
+.excel-cell {
+  border-right: 1px solid hsl(var(--border));
+  border-bottom: 1px solid hsl(var(--border));
+  padding: 4px 8px;
+  font-size: 13px;
+  line-height: 1.2;
+  vertical-align: middle;
+}
+
+.excel-cell:last-child {
+  border-right: none;
+}
