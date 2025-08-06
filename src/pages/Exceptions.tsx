@@ -8,13 +8,11 @@ interface ExceptionItem {
   id: string;
   primeBroker: string;
   runDate: string;
-  internalFund: string;
-  externalFund: string;
-  internalCusip: string;
-  externalCusip: string;
-  internalSecnum: string;
-  externalSecnum: string;
-  type: "NOT_MATCH_QTY" | "NEAR_MATCH_QTY" | "NOT_MATCH_INTERNAL" | "NOT_MATCH_EXTERNAL";
+  fund: string;
+  cusip: string;
+  secnum: string;
+  type: "CMO" | "Equity" | "Treasury" | "Corporate Bond" | "Municipal Bond";
+  matchStatus: "NOT_MATCH_QTY" | "NEAR_MATCH_QTY" | "NOT_MATCH_INTERNAL" | "NOT_MATCH_EXTERNAL";
   brokerQty: number;
   ellinQty: number;
   delta: number;
@@ -27,13 +25,11 @@ const Exceptions = () => {
       id: "1",
       primeBroker: "Goldman Sachs",
       runDate: "2024-01-15",
-      internalFund: "Fund A1",
-      externalFund: "Fund A1",
-      internalCusip: "218DSK472M",
-      externalCusip: "218DSK472M",
-      internalSecnum: "GMMAR 2007-TL7 4A12",
-      externalSecnum: "GMMAR 2007-TL7 4A12",
-      type: "NOT_MATCH_QTY",
+      fund: "Fund A1",
+      cusip: "218DSK472M",
+      secnum: "GMMAR 2007-TL7 4A12",
+      type: "CMO",
+      matchStatus: "NOT_MATCH_QTY",
       brokerQty: 950000,
       ellinQty: 1000000,
       delta: 50000,
@@ -42,13 +38,11 @@ const Exceptions = () => {
           id: "1a",
           primeBroker: "Goldman Sachs",
           runDate: "2024-01-15",
-          internalFund: "Fund A1",
-          externalFund: "Fund A1",
-          internalCusip: "218DSK472M",
-          externalCusip: "218DSK472M",
-          internalSecnum: "GMMAR 2007-TL7 4A12",
-          externalSecnum: "GMMAR 2007-TL7 4A12",
-          type: "NOT_MATCH_QTY",
+          fund: "Fund A1",
+          cusip: "218DSK472M",
+          secnum: "GMMAR 2007-TL7 4A12",
+          type: "CMO",
+          matchStatus: "NOT_MATCH_QTY",
           brokerQty: 475000,
           ellinQty: 500000,
           delta: 25000
@@ -57,13 +51,11 @@ const Exceptions = () => {
           id: "1b",
           primeBroker: "Goldman Sachs", 
           runDate: "2024-01-15",
-          internalFund: "Fund A1",
-          externalFund: "Fund A1",
-          internalCusip: "218DSK472M",
-          externalCusip: "218DSK472M",
-          internalSecnum: "GMMAR 2007-TL7 4A12",
-          externalSecnum: "GMMAR 2007-TL7 4A12",
-          type: "NOT_MATCH_QTY",
+          fund: "Fund A1",
+          cusip: "218DSK472M",
+          secnum: "GMMAR 2007-TL7 4A12",
+          type: "CMO",
+          matchStatus: "NOT_MATCH_QTY",
           brokerQty: 475000,
           ellinQty: 500000,
           delta: 25000
@@ -74,13 +66,11 @@ const Exceptions = () => {
       id: "2",
       primeBroker: "JP Morgan",
       runDate: "2024-01-15",
-      internalFund: "Fund B2",
-      externalFund: "Fund B2",
-      internalCusip: "037833100K",
-      externalCusip: "037833100K",
-      internalSecnum: "APPLE 2024-EQ3 7B89",
-      externalSecnum: "APPLE 2024-EQ3 7B89",
-      type: "NEAR_MATCH_QTY",
+      fund: "Fund B2",
+      cusip: "037833100K",
+      secnum: "APPLE 2024-EQ3 7B89",
+      type: "Equity",
+      matchStatus: "NEAR_MATCH_QTY",
       brokerQty: 770000,
       ellinQty: 750000,
       delta: -20000
@@ -89,13 +79,11 @@ const Exceptions = () => {
       id: "3",
       primeBroker: "Morgan Stanley",
       runDate: "2024-01-14",
-      internalFund: "Fund C3",
-      externalFund: "Fund C3",
-      internalCusip: "594918104L",
-      externalCusip: "594918104L",
-      internalSecnum: "MSFT 2023-DB2 1C45",
-      externalSecnum: "MSFT 2023-DB2 1C45",
-      type: "NOT_MATCH_INTERNAL",
+      fund: "Fund C3",
+      cusip: "594918104L",
+      secnum: "MSFT 2023-DB2 1C45",
+      type: "Corporate Bond",
+      matchStatus: "NOT_MATCH_INTERNAL",
       brokerQty: 500000,
       ellinQty: 0,
       delta: -500000
@@ -104,13 +92,11 @@ const Exceptions = () => {
       id: "4",
       primeBroker: "Merrill Lynch",
       runDate: "2024-01-14",
-      internalFund: "Fund D4",
-      externalFund: "Fund D4",
-      internalCusip: "79466L302N",
-      externalCusip: "79466L302N",
-      internalSecnum: "SFDC 2025-CL8 9D12",
-      externalSecnum: "SFDC 2025-CL8 9D12",
-      type: "NOT_MATCH_EXTERNAL",
+      fund: "Fund D4",
+      cusip: "79466L302N",
+      secnum: "SFDC 2025-CL8 9D12",
+      type: "Treasury",
+      matchStatus: "NOT_MATCH_EXTERNAL",
       brokerQty: 0,
       ellinQty: 300000,
       delta: 300000
@@ -119,13 +105,11 @@ const Exceptions = () => {
       id: "5",
       primeBroker: "Credit Suisse",
       runDate: "2024-01-15",
-      internalFund: "Fund E5",
-      externalFund: "Fund E5",
-      internalCusip: "88160R101P",
-      externalCusip: "88160R101P",
-      internalSecnum: "TESLA 2022-MT5 6E78",
-      externalSecnum: "TESLA 2022-MT5 6E78",
-      type: "NOT_MATCH_QTY",
+      fund: "Fund E5",
+      cusip: "88160R101P",
+      secnum: "TESLA 2022-MT5 6E78",
+      type: "Equity",
+      matchStatus: "NOT_MATCH_QTY",
       brokerQty: 1200000,
       ellinQty: 1180000,
       delta: -20000
@@ -134,13 +118,11 @@ const Exceptions = () => {
       id: "6",
       primeBroker: "Deutsche Bank",
       runDate: "2024-01-15",
-      internalFund: "Fund F6",
-      externalFund: "Fund F6",
-      internalCusip: "369604103R",
-      externalCusip: "369604103R",
-      internalSecnum: "GENL 2021-FN7 2A34",
-      externalSecnum: "GENL 2021-FN7 2A34",
-      type: "NEAR_MATCH_QTY",
+      fund: "Fund F6",
+      cusip: "369604103R",
+      secnum: "GENL 2021-FN7 2A34",
+      type: "Municipal Bond",
+      matchStatus: "NEAR_MATCH_QTY",
       brokerQty: 850000,
       ellinQty: 875000,
       delta: 25000
@@ -149,13 +131,11 @@ const Exceptions = () => {
       id: "7",
       primeBroker: "Barclays",
       runDate: "2024-01-14",
-      internalFund: "Fund G7",
-      externalFund: "Fund G7",
-      internalCusip: "254687106S",
-      externalCusip: "254687106S",
-      internalSecnum: "NVDA 2023-AI4 8F90",
-      externalSecnum: "NVDA 2023-AI4 8F90",
-      type: "NOT_MATCH_INTERNAL",
+      fund: "Fund G7",
+      cusip: "254687106S",
+      secnum: "NVDA 2023-AI4 8F90",
+      type: "Equity",
+      matchStatus: "NOT_MATCH_INTERNAL",
       brokerQty: 320000,
       ellinQty: 0,
       delta: -320000
@@ -164,13 +144,11 @@ const Exceptions = () => {
       id: "8",
       primeBroker: "UBS",
       runDate: "2024-01-14",
-      internalFund: "Fund H8",
-      externalFund: "Fund H8",
-      internalCusip: "68389X105T",
-      externalCusip: "68389X105T",
-      internalSecnum: "ORACLE 2020-SW3 5G67",
-      externalSecnum: "ORACLE 2020-SW3 5G67",
-      type: "NOT_MATCH_EXTERNAL",
+      fund: "Fund H8",
+      cusip: "68389X105T",
+      secnum: "ORACLE 2020-SW3 5G67",
+      type: "Corporate Bond",
+      matchStatus: "NOT_MATCH_EXTERNAL",
       brokerQty: 0,
       ellinQty: 450000,
       delta: 450000
@@ -179,13 +157,11 @@ const Exceptions = () => {
       id: "9",
       primeBroker: "Citigroup",
       runDate: "2024-01-15",
-      internalFund: "Fund I9",
-      externalFund: "Fund I9",
-      internalCusip: "717081103U",
-      externalCusip: "717081103U",
-      internalSecnum: "PEPSI 2024-CV9 3H23",
-      externalSecnum: "PEPSI 2024-CV9 3H23",
-      type: "NOT_MATCH_QTY",
+      fund: "Fund I9",
+      cusip: "717081103U",
+      secnum: "PEPSI 2024-CV9 3H23",
+      type: "CMO",
+      matchStatus: "NOT_MATCH_QTY",
       brokerQty: 2100000,
       ellinQty: 2050000,
       delta: -50000
@@ -194,21 +170,19 @@ const Exceptions = () => {
       id: "10",
       primeBroker: "Wells Fargo",
       runDate: "2024-01-15",
-      internalFund: "Fund J10",
-      externalFund: "Fund J10",
-      internalCusip: "931142103V",
-      externalCusip: "931142103V",
-      internalSecnum: "WMT 2025-RT1 7I56",
-      externalSecnum: "WMT 2025-RT1 7I56",
-      type: "NEAR_MATCH_QTY",
+      fund: "Fund J10",
+      cusip: "931142103V",
+      secnum: "WMT 2025-RT1 7I56",
+      type: "Treasury",
+      matchStatus: "NEAR_MATCH_QTY",
       brokerQty: 680000,
       ellinQty: 695000,
       delta: 15000
     }
   ]);
 
-  const getExceptionColor = (type: ExceptionItem["type"]) => {
-    switch (type) {
+  const getExceptionColor = (matchStatus: ExceptionItem["matchStatus"]) => {
+    switch (matchStatus) {
       case "NOT_MATCH_QTY":
         return "bg-exception-not-match-qty text-white";
       case "NEAR_MATCH_QTY":
@@ -222,8 +196,8 @@ const Exceptions = () => {
     }
   };
 
-  const getExceptionLabel = (type: ExceptionItem["type"]) => {
-    switch (type) {
+  const getExceptionLabel = (matchStatus: ExceptionItem["matchStatus"]) => {
+    switch (matchStatus) {
       case "NOT_MATCH_QTY":
         return "Quantity Mismatch";
       case "NEAR_MATCH_QTY":
@@ -252,16 +226,14 @@ const Exceptions = () => {
   const columns: DataTableColumn[] = [
     { key: "primeBroker", header: "Prime Broker" },
     { key: "runDate", header: "Run Date" },
-    { key: "internalFund", header: "Internal Fund" },
-    { key: "externalFund", header: "External Fund" },
-    { key: "internalCusip", header: "Internal CUSIP" },
-    { key: "externalCusip", header: "External CUSIP" },
-    { key: "internalSecnum", header: "Internal Secnum" },
-    { key: "externalSecnum", header: "External Secnum" },
+    { key: "fund", header: "Fund" },
+    { key: "cusip", header: "CUSIP" },
+    { key: "secnum", header: "Secnum" },
     { key: "type", header: "Type" },
     { key: "brokerQty", header: "Broker Qty" },
     { key: "ellinQty", header: "Ellin Qty" },
-    { key: "delta", header: "Delta" }
+    { key: "delta", header: "Delta" },
+    { key: "matchStatus", header: "Match Status" }
   ];
 
   const tableData: DataTableRow[] = exceptions.map(exception => ({
@@ -269,25 +241,18 @@ const Exceptions = () => {
     expandable: !!exception.subTypes?.length,
     className: cn(
       "border-l-4",
-      exception.type === "NOT_MATCH_QTY" && "border-l-exception-not-match-qty",
-      exception.type === "NEAR_MATCH_QTY" && "border-l-exception-near-match-qty", 
-      exception.type === "NOT_MATCH_INTERNAL" && "border-l-exception-not-match-internal",
-      exception.type === "NOT_MATCH_EXTERNAL" && "border-l-exception-not-match-external"
+      exception.matchStatus === "NOT_MATCH_QTY" && "border-l-exception-not-match-qty",
+      exception.matchStatus === "NEAR_MATCH_QTY" && "border-l-exception-near-match-qty", 
+      exception.matchStatus === "NOT_MATCH_INTERNAL" && "border-l-exception-not-match-internal",
+      exception.matchStatus === "NOT_MATCH_EXTERNAL" && "border-l-exception-not-match-external"
     ),
     data: {
       primeBroker: exception.primeBroker,
       runDate: exception.runDate,
-      internalFund: exception.internalFund,
-      externalFund: exception.externalFund,
-      internalCusip: exception.internalCusip,
-      externalCusip: exception.externalCusip,
-      internalSecnum: exception.internalSecnum,
-      externalSecnum: exception.externalSecnum,
-      type: (
-        <Badge className={getExceptionColor(exception.type)}>
-          {getExceptionLabel(exception.type)}
-        </Badge>
-      ),
+      fund: exception.fund,
+      cusip: exception.cusip,
+      secnum: exception.secnum,
+      type: exception.type,
       brokerQty: formatNumber(exception.brokerQty),
       ellinQty: formatNumber(exception.ellinQty),
       delta: (
@@ -297,6 +262,11 @@ const Exceptions = () => {
         )}>
           {formatDelta(exception.delta)}
         </span>
+      ),
+      matchStatus: (
+        <Badge className={getExceptionColor(exception.matchStatus)}>
+          {getExceptionLabel(exception.matchStatus)}
+        </Badge>
       )
     },
     children: exception.subTypes?.map(subType => ({
@@ -304,17 +274,10 @@ const Exceptions = () => {
       data: {
         primeBroker: subType.primeBroker,
         runDate: subType.runDate,
-        internalFund: subType.internalFund,
-        externalFund: subType.externalFund,
-        internalCusip: subType.internalCusip,
-        externalCusip: subType.externalCusip,
-        internalSecnum: subType.internalSecnum,
-        externalSecnum: subType.externalSecnum,
-        type: (
-          <Badge className={getExceptionColor(subType.type)}>
-            {getExceptionLabel(subType.type)}
-          </Badge>
-        ),
+        fund: subType.fund,
+        cusip: subType.cusip,
+        secnum: subType.secnum,
+        type: subType.type,
         brokerQty: formatNumber(subType.brokerQty),
         ellinQty: formatNumber(subType.ellinQty),
         delta: (
@@ -324,6 +287,11 @@ const Exceptions = () => {
           )}>
             {formatDelta(subType.delta)}
           </span>
+        ),
+        matchStatus: (
+          <Badge className={getExceptionColor(subType.matchStatus)}>
+            {getExceptionLabel(subType.matchStatus)}
+          </Badge>
         )
       }
     }))
@@ -332,10 +300,10 @@ const Exceptions = () => {
   const exceptionStats = useMemo(() => {
     const stats = {
       total: exceptions.length,
-      notMatchQty: exceptions.filter(e => e.type === "NOT_MATCH_QTY").length,
-      nearMatchQty: exceptions.filter(e => e.type === "NEAR_MATCH_QTY").length,
-      notMatchInternal: exceptions.filter(e => e.type === "NOT_MATCH_INTERNAL").length,
-      notMatchExternal: exceptions.filter(e => e.type === "NOT_MATCH_EXTERNAL").length,
+      notMatchQty: exceptions.filter(e => e.matchStatus === "NOT_MATCH_QTY").length,
+      nearMatchQty: exceptions.filter(e => e.matchStatus === "NEAR_MATCH_QTY").length,
+      notMatchInternal: exceptions.filter(e => e.matchStatus === "NOT_MATCH_INTERNAL").length,
+      notMatchExternal: exceptions.filter(e => e.matchStatus === "NOT_MATCH_EXTERNAL").length,
     };
     return stats;
   }, [exceptions]);
